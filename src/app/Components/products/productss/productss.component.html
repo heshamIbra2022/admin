@@ -1,0 +1,105 @@
+
+<div class="mb-3">
+  <label for="" class="form-label">Select Category</label>
+  <select class="form-control" name="cat" id="CatSel" title="catgory" (change)="getproduct()"  [(ngModel)]="selectedCatID" >
+    <option value="0">Select All</option>
+    <option *ngFor="let cat of categoryList " [value]="cat.id" >{{cat.name}}</option>
+  </select>
+</div>
+
+
+
+
+
+
+<table class="table"   >
+  <thead>
+    <tr>
+    
+      <th scope="col">Id </th>
+      <th scope="col">NAme</th>
+      <th scope="col">Quantity</th>
+      <th   scope="col">      img</th>
+      <th scope="col">price</th>
+      <!-- <th scope="col">details</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container   *ngFor="let item of productListOfCat">
+    <tr  [hidden]="item.quantity==0" [ngStyle]="{'background-color':item.quantity==1? 'yellow':'white', 'color':item.quantity==1? 'red':'darkblue'}">
+      <th scope="row">{{item.id}}</th>
+      <td>{{item.name}}</td>
+      <td>{{item.quantity}}</td>
+      <td><img CustomAttribute src="{{ item.img }}" ></td>
+      <td>{{item.price | currency:'EGP'}}</td>
+      <!-- <td><button type="button" class="btn btn-secondary" (click)=getProductDetails(item.Id) >Details</button></td> -->
+      <td><a name="" id="" class="btn btn-primary"  role="button" (click)="openPopup(item)">Details</a></td>
+      <td><a name="" id="" class="btn btn-primary"  role="button" [routerLink]="['/products/updateproduct', item.id]">Edit</a></td>
+      <td><button type="button" class="btn btn-secondary" (click)="deleteItem(item)" >delete</button></td>
+  
+
+      <div class="btn-group">
+
+       
+        
+     </div>
+
+
+     
+    </tr>
+    
+  </ng-container>
+  </tbody>
+</table>
+
+
+
+
+<div
+  class="modal"
+  tabindex="-1"
+  role="dialog"
+  [ngStyle]="{'display':displayStyle}">
+   <div class="modal-dialog" role="document">
+    <div class="modal-content"> 
+     
+      
+       
+
+      <img [src]="product?.img" class="card-img-top" alt="...">
+      <hr>
+      <div class="card-body">
+        <h5 class="card-title">Product name :{{product?.name }}</h5>
+        <hr>
+        <div >Quantity Exist = {{ product?.quantity }}</div>
+        <hr>
+        <div>Price Of Product = {{ product?.price | currency: 'USD' : 'code'}}</div>
+        <hr>
+
+
+        <div>Price Of Product = {{ product?.price | currency: 'USD' : 'code'}}</div>
+        <hr>
+
+
+     
+                    <button type="button" class="btn btn-danger" 
+                    (click)="closePopup()">
+              Close
+            </button>
+                        
+                  </div>
+                </div>
+                </div>
+          </div>
+      
+      
+      
+
+
+
+
+
+
+
+     
+      

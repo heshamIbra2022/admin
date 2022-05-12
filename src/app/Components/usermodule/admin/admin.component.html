@@ -1,0 +1,42 @@
+
+  <h2 class=" bg-dark text-white " style="text-align: center;">hello Admin {{adminName}}</h2>  
+ 
+
+<h1>admins</h1>
+
+<table class="table"   >
+    <thead>
+      <tr>
+      
+        <th scope="col">name </th>
+        <th scope="col">password</th>
+        <th scope="col">email</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container   *ngFor="let item of admins ">
+      <tr  >
+        <!-- <th scope="row">{{item.name}}</th> -->
+        <td>{{item.name}}</td>
+        <td>{{item.password}}</td>
+       
+        <td>{{item.email}}</td>
+    
+  
+        <div class="btn-group">
+  
+         
+          
+       </div>
+  
+  
+       
+      </tr>
+      
+    </ng-container>
+    </tbody>
+  </table>
+  
+  
+  
